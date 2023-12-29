@@ -4,8 +4,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
+    "email": "git config --global user.email '4566470+jcgoodwin86@users.noreply.github.com'",
+    "dev": "astro dev && npm run email",
+    "start": "astro dev && npm run email",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
