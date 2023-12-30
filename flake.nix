@@ -12,7 +12,7 @@
     in {
       devShells.${system}.default = pkgs.mkShell {
         buildInputs = [
-          pkgs.nodejs-21
+          pkgs.nodejs_21
         ];
       };
     };
