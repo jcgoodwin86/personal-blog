@@ -1,8 +1,24 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-const pageTitle = "Home Page";
+import { getAllPosts } from "../scripts/fetcher";
+
+const latestPosts = await getAllPosts();
+const pageTitle = latestPosts.publication.title;
+const postsArr = [...latestPosts.publication.posts.edges];
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <h2>My awesome blog subtitle</h2>
+  <ul>
+    {
+      postsArr.map((post) => {
+        return <li>{post.node.title}</li>;
+      })
+    }
+  </ul>
 </BaseLayout>
+
+<script>
+  import { getAllPosts } from "../scripts/fetcher";
+
+  console.log(await getAllPosts());
+</script>

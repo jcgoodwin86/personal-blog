@@ -1,0 +1,31 @@
+---
+// This component will be used to render the blog post pages
+import { getPost, getAllPosts } from "../../scripts/fetcher";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+// getStaticProps will fetch the post data for all the posts
+// and create a page and route for each post
+export async function getStaticPaths() {
+  const data = await getAllPosts();
+  const allPosts = data.publication.posts.edges;
+  return allPosts.map((post) => {
+    return {
+      params: {
+        slug: post.node.slug,
+      },
+    };
+  });
+}
+
+const { slug } = Astro.params;
+const postHTML = await getPost(slug);
+---
+
+<!--  -->
+<BaseLayout pageTitle={postHTML.publication.post.title}>
+  <!-- TODO Look up if I need to santize the html -->
+  <div
+    set:html={postHTML.publication.post.content.html}
+    class="prose max-w-none w-2/3"
+  />
+</BaseLayout>

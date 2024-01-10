@@ -1,7 +1,7 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import "../styles/global.css";
+// import "../styles/global.css";
 const { pageTitle } = Astro.props;
 ---
 
@@ -13,9 +13,11 @@ const { pageTitle } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
   </head>
-  <body>
+  <body
+    class="flex flex-col place-content-center place-items-center w-5/6 m-auto"
+  >
     <Header />
-    <h1>{pageTitle}</h1>
+    <h1 class="text-5xl font-extrabold w-3/4 my-5">{pageTitle}</h1>
     <slot />
     <Footer />
     <script>
