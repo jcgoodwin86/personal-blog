@@ -1,10 +1,20 @@
+const { builtinModules } = require("module");
+
+/** @type {import("@types/eslint").Linter.Config} */
 module.exports = {
-  // ...
+  env: {
+    es6: true,
+  },
   extends: [
     // ...
     "plugin:astro/recommended",
   ],
   // ...
+  parserOptions: {
+    //   parser: "@typescript-eslint/parser",
+    //   extraFileExtensions: [".astro"],
+    sourceType: "module",
+  },
   overrides: [
     {
       // Define the configuration for `.astro` file.
