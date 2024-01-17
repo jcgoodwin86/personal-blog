@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import BlogPost from "../../components/BlogPost.astro";
+import BlogPostCard from "../../components/BlogPostCard.astro";
 import { getAllPosts } from "../../scripts/fetcher";
 // const allPosts = await Astro.glob("./posts/*.md");
 const data = await getAllPosts();
@@ -10,11 +10,5 @@ const pageTitle = "My Learning Blog";
 
 <!-- TODO setup to list all post from hashnode -->
 <BaseLayout pageTitle={pageTitle}>
-  <ul>
-    {
-      allPosts.map((post) => (
-        <BlogPost url={post.node.slug} title={post.node.title} />
-      ))
-    }
-  </ul>
+  {allPosts.map((post) => <BlogPostCard post={post} />)}
 </BaseLayout>
