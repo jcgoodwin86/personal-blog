@@ -4,20 +4,10 @@ const username = "withastro";
 import Social from "./Social.astro";
 ---
 
-<style>
-  footer {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
-  }
-</style>
-
-<footer>
-  <p>
-    Learn more about my projects on <a
-      href={`https://www.${platform}.com/${username}`}>{platform}</a
-    >!
-  </p>
+<footer class="w-full flex gap-1 my-2 place-content-center">
+  <!-- TODO Put social Icons instead of text -->
+  <!-- TODO Put main social media links -->
+  <!-- <Social platform="linkedin" username="jcgoodwin86" /> -->
   <Social platform="twitter" username="_jcgoodwin" />
   <Social platform="github" username="jcgoodwin86" />
   <Social platform="youtube" username="@Jcgoodwin" />

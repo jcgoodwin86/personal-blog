@@ -1,9 +1,9 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import BlogPostCard from "../../components/BlogPostCard.astro";
-import { getAllPosts } from "../../scripts/fetcher";
+import { getPosts } from "../../scripts/fetcher";
 // const allPosts = await Astro.glob("./posts/*.md");
-const data = await getAllPosts();
+const data = await getPosts(5);
 const allPosts = data.publication.posts.edges;
 const pageTitle = "My Learning Blog";
 ---

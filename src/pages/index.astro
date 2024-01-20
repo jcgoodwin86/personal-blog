@@ -1,24 +1,19 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { getAllPosts } from "../scripts/fetcher";
+import BlogPostCard from "../components/BlogPostCard.astro";
+import { getPosts } from "../scripts/fetcher";
 
-const latestPosts = await getAllPosts();
-const pageTitle = latestPosts.publication.title;
-const postsArr = [...latestPosts.publication.posts.edges];
+const data = await getPosts();
+const pageTitle = data.publication.title;
+const postsArr = data.publication.posts.edges;
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <ul>
-    {
-      postsArr.map((post) => {
-        return <li>{post.node.title}</li>;
-      })
-    }
-  </ul>
+  {postsArr.map((post) => <BlogPostCard post={post} />)}
 </BaseLayout>
 
 <script>
-  import { getAllPosts } from "../scripts/fetcher";
+  import { getPosts } from "../scripts/fetcher";
 
-  console.log(await getAllPosts());
+  console.log(await getPosts());
 </script>

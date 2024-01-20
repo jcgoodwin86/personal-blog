@@ -1,6 +1,6 @@
 const { builtinModules } = require("module");
 
-/** @type {import("@types/eslint").Linter.Config} */
+// /** @type {import("@types/eslint").Linter.Config} */
 module.exports = {
   env: {
     es6: true,
@@ -14,6 +14,7 @@ module.exports = {
     //   parser: "@typescript-eslint/parser",
     //   extraFileExtensions: [".astro"],
     sourceType: "module",
+    ecmaVersion: "latest",
   },
   overrides: [
     {
