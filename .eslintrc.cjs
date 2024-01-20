@@ -14,6 +14,7 @@ module.exports = {
     //   parser: "@typescript-eslint/parser",
     //   extraFileExtensions: [".astro"],
     sourceType: "module",
+    ecmaVersion: lastest,
   },
   overrides: [
     {

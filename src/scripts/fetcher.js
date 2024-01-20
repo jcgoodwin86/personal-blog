@@ -1,12 +1,12 @@
 // TODO Add error handling
 // TODO Setup to get all posts, right now it only gets 5
 // TODO Look into using GraphQL client
-export async function getAllPosts() {
+export async function getPosts(numberOfPosts = 3) {
   const postsRequest = `  
       query allPosts {  
           publication(host: "blog.stephcrown.com") {  
             title  
-            posts(first: 5) {  
+            posts(first: ${numberOfPosts}) {  
               pageInfo {  
                 hasNextPage  
                 endCursor  
