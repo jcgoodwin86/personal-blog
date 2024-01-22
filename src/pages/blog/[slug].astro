@@ -1,12 +1,13 @@
 ---
 // This component will be used to render the blog post pages
-import { getPost, getPosts } from "../../scripts/fetcher";
+import { getPost } from "../../scripts/fetcher";
+import { getAllPosts } from "../../scripts/getAllPosts";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 // getStaticProps will fetch the post data for all the posts
 // and create a page and route for each post
 export async function getStaticPaths() {
-  const data = await getPosts(5);
+  const data = await getAllPosts();
   const allPosts = data.publication.posts.edges;
   return allPosts.map((post) => {
     return {

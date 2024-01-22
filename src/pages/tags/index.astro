@@ -1,7 +1,11 @@
 ---
+// FIXME the tags come as an object with a slug and a name
+//       but the slug and name dont always match up so we need to
+//       use the name for the link but the slug for the page
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getPosts } from "../../scripts/fetcher";
-const allPosts = await getPosts();
+import { getAllPosts } from "../../scripts/getAllPosts";
+
+const allPosts = await getAllPosts();
 const tags = [
   ...new Set(
     allPosts.publication.posts.edges
@@ -9,7 +13,7 @@ const tags = [
       .flat()
   ),
 ];
-console.log(tags);
+
 const pageTitle = "Tag Index";
 ---
 
@@ -24,12 +28,6 @@ const pageTitle = "Tag Index";
     }
   </div>
 </BaseLayout>
-
-<script>
-  import { getPosts } from "../../scripts/fetcher";
-
-  console.log(await getPosts());
-</script>
 
 <style>
   a {

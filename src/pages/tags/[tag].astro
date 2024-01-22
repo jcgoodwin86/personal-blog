@@ -1,12 +1,13 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import BlogPostCard from "../../components/BlogPostCard.astro";
-import { getPosts, getTagsPosts } from "../../scripts/fetcher";
+import { getTagsPosts } from "../../scripts/fetcher";
+import { getAllPosts } from "../../scripts/getAllPosts";
 
 export async function getStaticPaths() {
   // Get all the tags from all the posts
   // We need to do this because we don't know what tags are available
-  const allPosts = await getPosts(10);
+  const allPosts = await getAllPosts();
   const uniqueTags = [
     ...new Set(
       allPosts.publication.posts.edges
