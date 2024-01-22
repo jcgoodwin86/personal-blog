@@ -1,9 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import BlogPostCard from "../components/BlogPostCard.astro";
-import { getPosts } from "../scripts/fetcher";
+import { getAllPosts } from "../scripts/getAllPosts.js";
 
-const data = await getPosts();
+const data = await getAllPosts();
 const pageTitle = data.publication.title;
 const postsArr = data.publication.posts.edges;
 ---
@@ -11,9 +11,3 @@ const postsArr = data.publication.posts.edges;
 <BaseLayout pageTitle={pageTitle}>
   {postsArr.map((post) => <BlogPostCard post={post} />)}
 </BaseLayout>
-
-<script>
-  import { getPosts } from "../scripts/fetcher";
-
-  console.log(await getPosts());
-</script>
